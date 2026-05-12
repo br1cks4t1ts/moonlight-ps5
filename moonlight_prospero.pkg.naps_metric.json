@@ -1,0 +1,306 @@
+{
+   "msg": [
+   ],
+   "lib build": {
+      "version": "v1.1.4a",
+      "hash": "235d9c624f8e5d7ac857d36a3e6216c198e2bc3c"
+   },
+   "cpu": {
+      "vendor": "AuthenticAMD",
+      "brand": "AMD Ryzen 7 7700 8-Core Processor              ",
+      "features": ["aes", "sse2", "ssse3", "sse41", "sse42", "avx", "avx2", "bmi2"],
+      "numa nodes": 1,
+      "physical sockets": 1,
+      "processor cores": 8,
+      "logical processors": 16,
+      "processor L1 caches": 16,
+      "processor L2 caches": 8,
+      "processor L3 caches": 1
+   },
+   "memory": {
+      "os physical": 33367339008,
+      "os peak working set": 418729984,
+      "os peak page set": 28884992
+   },
+   "package": {
+      "threads": 16,
+      "compression level": 7,
+      "deduplicate writes": "yes",
+      "time microseconds": 235227,
+      "files": 7,
+      "files no compress": 1,
+      "files incompressible": 0,
+      "files executables": 1,
+      "input uncompressed bytes": 9043968,
+      "referenced blocks": 14,
+      "referenced bytes": 224,
+      "new blocks": 26,
+      "new block bytes": 1464398,
+      "new no compress blocks": 1,
+      "new no compress bytes": 12752,
+      "new incompressible blocks": 1,
+      "new incompressible bytes": 96,
+      "write deduplicate blocks": 14,
+      "write deduplicate bytes": 224,
+      "shuffled blocks": 0,
+      "non-shuffleable blocks": 0,
+      "new outer blocks": 27,
+      "referenced outer blocks": 0,
+      "obsolete outer blocks": 0,
+      "coalesce input outer blocks": 0,
+      "coalesce input outer block bytes": 0,
+      "coalesce input inner blocks": 0,
+      "coalesce input inner block bytes": 0,
+      "coalesce obsolete outer blocks": 0,
+      "coalesce output outer blocks": 0,
+      "coalesce output outer block bytes": 0,
+      "PlayGo chunks": 2,
+      "new file count": 7,
+      "new file uncompressed bytes": 9043968,
+      "runtime logical file padding count": 1,
+      "runtime cblockinfo base count": 22,
+      "runtime cblockinfo element count": 41
+   },
+   "alignment adjustment": {
+      "milliseconds": 0,
+      "ob reads": 0,
+      "inspected block count": 0,
+      "relocate block count": 0,
+      "relocate block bytes": 0,
+      "update block count": 0,
+      "update block bytes": 0,
+      "update alignment bytes": 0,
+      "total block count": 0
+   },
+   "playgo chunk size" : [
+      {"playgo chunk" : "0", "exe delta ob" : "1", "exe delta mib" : "0.062500", "exe in use ob" : "1", "exe in use mib" : "0.062500", "data delta ob" : "24", "data delta mib" : "1.500000", "data in use ob" : "24", "data in use mib" : "1.500000"},
+      {"playgo chunk" : "1001", "exe delta ob" : "0", "exe delta mib" : "0.000000", "exe in use ob" : "0", "exe in use mib" : "0.000000", "data delta ob" : "1", "data delta mib" : "0.062500", "data in use ob" : "1", "data in use mib" : "0.062500"}
+   ],
+   "files-deleted": [
+   ],
+   "files": [
+      {"name": "sce_sys/keystone", "state": "new", "chunk": 0, "ubytes": 96, "cbytes": 96, "ref-blocks": 0, "ref-cbytes": 0, "new-blocks": 1, "new-cbytes": 96},
+      {"name": "sce_sys/about/right.sprx", "state": "new", "chunk": 0, "ubytes": 12752, "cbytes": 12752, "ref-blocks": 0, "ref-cbytes": 0, "new-blocks": 1, "new-cbytes": 12752},
+      {"name": "eboot.bin", "state": "new", "chunk": 0, "ubytes": 4372656, "cbytes": 1448570, "ref-blocks": 0, "ref-cbytes": 0, "new-blocks": 17, "new-cbytes": 1448570},
+      {"name": "client_cert.pem", "state": "new", "chunk": 0, "ubytes": 1017, "cbytes": 762, "ref-blocks": 0, "ref-cbytes": 0, "new-blocks": 1, "new-cbytes": 762},
+      {"name": "client_key.pem", "state": "new", "chunk": 0, "ubytes": 1675, "cbytes": 1303, "ref-blocks": 0, "ref-cbytes": 0, "new-blocks": 1, "new-cbytes": 1303},
+      {"name": "*PFSmetadata", "state": "new", "chunk": 1001, "ubytes": 655360, "cbytes": 891, "ref-blocks": 0, "ref-cbytes": 0, "new-blocks": 3, "new-cbytes": 891}
+   ],
+   "debug threads": {
+      "reader": {
+         "open": 1352,
+         "pfscheck": 42,
+         "read": 52869,
+         "close": 599,
+         "processing": 54998
+      },
+      "writer": {
+         "total": 190036,
+         "processing": 944
+      },
+      "rolling search": {
+         "total": 66674,
+         "processing init": 0,
+         "processing": 0,
+         "processing finish": 0
+      },
+      "cse": [
+         {
+            "total": 199733,
+            "rolling hash": 266,
+            "weak hash": 38,
+            "strong hash": 3573,
+            "compress": 109682,
+            "decompress": 0,
+            "block search": 1,
+            "outer block digest": 0,
+            "outer block encrypt": 0,
+            "outer block crc": 0
+         },
+         {
+            "total": 199523,
+            "rolling hash": 233,
+            "weak hash": 36,
+            "strong hash": 2540,
+            "compress": 125264,
+            "decompress": 0,
+            "block search": 0,
+            "outer block digest": 0,
+            "outer block encrypt": 0,
+            "outer block crc": 0
+         },
+         {
+            "total": 199298,
+            "rolling hash": 231,
+            "weak hash": 32,
+            "strong hash": 3908,
+            "compress": 128064,
+            "decompress": 0,
+            "block search": 1,
+            "outer block digest": 0,
+            "outer block encrypt": 0,
+            "outer block crc": 0
+         },
+         {
+            "total": 199223,
+            "rolling hash": 152,
+            "weak hash": 21,
+            "strong hash": 1605,
+            "compress": 86375,
+            "decompress": 0,
+            "block search": 0,
+            "outer block digest": 1046,
+            "outer block encrypt": 58,
+            "outer block crc": 38
+         },
+         {
+            "total": 198949,
+            "rolling hash": 227,
+            "weak hash": 155,
+            "strong hash": 1945,
+            "compress": 91819,
+            "decompress": 0,
+            "block search": 0,
+            "outer block digest": 784,
+            "outer block encrypt": 52,
+            "outer block crc": 24
+         },
+         {
+            "total": 198625,
+            "rolling hash": 165,
+            "weak hash": 119,
+            "strong hash": 1888,
+            "compress": 85091,
+            "decompress": 0,
+            "block search": 0,
+            "outer block digest": 644,
+            "outer block encrypt": 35,
+            "outer block crc": 23
+         },
+         {
+            "total": 198423,
+            "rolling hash": 261,
+            "weak hash": 106,
+            "strong hash": 1421,
+            "compress": 82390,
+            "decompress": 0,
+            "block search": 1,
+            "outer block digest": 780,
+            "outer block encrypt": 48,
+            "outer block crc": 27
+         },
+         {
+            "total": 198209,
+            "rolling hash": 249,
+            "weak hash": 44,
+            "strong hash": 3841,
+            "compress": 115970,
+            "decompress": 0,
+            "block search": 0,
+            "outer block digest": 0,
+            "outer block encrypt": 0,
+            "outer block crc": 0
+         },
+         {
+            "total": 197897,
+            "rolling hash": 159,
+            "weak hash": 265,
+            "strong hash": 2251,
+            "compress": 88503,
+            "decompress": 0,
+            "block search": 0,
+            "outer block digest": 775,
+            "outer block encrypt": 38,
+            "outer block crc": 27
+         },
+         {
+            "total": 192384,
+            "rolling hash": 228,
+            "weak hash": 87,
+            "strong hash": 2213,
+            "compress": 97240,
+            "decompress": 0,
+            "block search": 0,
+            "outer block digest": 0,
+            "outer block encrypt": 0,
+            "outer block crc": 0
+         },
+         {
+            "total": 192379,
+            "rolling hash": 171,
+            "weak hash": 53,
+            "strong hash": 3824,
+            "compress": 132039,
+            "decompress": 0,
+            "block search": 0,
+            "outer block digest": 0,
+            "outer block encrypt": 0,
+            "outer block crc": 0
+         },
+         {
+            "total": 192001,
+            "rolling hash": 159,
+            "weak hash": 34,
+            "strong hash": 3123,
+            "compress": 129197,
+            "decompress": 0,
+            "block search": 0,
+            "outer block digest": 0,
+            "outer block encrypt": 0,
+            "outer block crc": 0
+         },
+         {
+            "total": 191797,
+            "rolling hash": 185,
+            "weak hash": 80,
+            "strong hash": 2837,
+            "compress": 125459,
+            "decompress": 0,
+            "block search": 0,
+            "outer block digest": 0,
+            "outer block encrypt": 0,
+            "outer block crc": 0
+         },
+         {
+            "total": 191673,
+            "rolling hash": 221,
+            "weak hash": 40,
+            "strong hash": 3267,
+            "compress": 100370,
+            "decompress": 0,
+            "block search": 0,
+            "outer block digest": 0,
+            "outer block encrypt": 0,
+            "outer block crc": 0
+         },
+         {
+            "total": 191413,
+            "rolling hash": 199,
+            "weak hash": 20,
+            "strong hash": 2715,
+            "compress": 81593,
+            "decompress": 0,
+            "block search": 0,
+            "outer block digest": 619,
+            "outer block encrypt": 35,
+            "outer block crc": 23
+         },
+         {
+            "total": 191260,
+            "rolling hash": 178,
+            "weak hash": 11,
+            "strong hash": 1055,
+            "compress": 87619,
+            "decompress": 0,
+            "block search": 0,
+            "outer block digest": 195,
+            "outer block encrypt": 9,
+            "outer block crc": 6
+         }
+      ]
+   },
+   "debug hash collision sets": [
+   ],
+   "debug rolling search file": [
+   ]
+}

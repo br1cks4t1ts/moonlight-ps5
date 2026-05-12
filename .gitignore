@@ -1,0 +1,7 @@
+.aider*
+build/
+*.pkg
+*.elf
+*.o
+*.npsso
+
