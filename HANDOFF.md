@@ -9,13 +9,13 @@ running in Docker at YOUR_WOLF_SERVER_IP.
 
 ## Hardware / Network
 - PS5 fw 10.00, etaHEN jailbreak
-- PS5 IP: 172.16.132.27
+- PS5 IP: YOUR_PS5_IP
 - Dev machine IP: YOUR_DEV_MACHINE_IP (Linux, Arch, RTX 4070 Ti SUPER)
 - PS5 services:
-  - FTP: 172.16.132.27:1337
-  - klog: 172.16.132.27:9081 (kernel log TCP stream)
-  - Package installer: 172.16.132.27:9090
-  - Web package installer (DPI v2): 172.16.132.27:12800
+  - FTP: YOUR_PS5_IP:1337
+  - klog: YOUR_PS5_IP:9081 (kernel log TCP stream)
+  - Package installer: YOUR_PS5_IP:9090
+  - Web package installer (DPI v2): YOUR_PS5_IP:12800
 - Dev machine runs a simple HTTP server (python3 -m http.server) in /home/mike/ps5-moonlight/
   when needed for pushing files to the PS5
 
@@ -150,7 +150,7 @@ the app to actually launch (as daemon), then fix video separately.
 ---
 
 ## Diagnostics
-- klog (port 9081): `nc 172.16.132.27 9081` — streams PS5 kernel log
+- klog (port 9081): `nc YOUR_PS5_IP 9081` — streams PS5 kernel log
 - Diag TCP: main.c connects to YOUR_DEV_PC_IP:9999 on startup, redirects stdout/stderr
   there. Run `python3 -c "import socket,sys; s=socket.socket(); s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1); s.bind(('0.0.0.0',9999)); s.listen(5); c,a=s.accept(); [sys.stdout.write(d.decode(errors='replace')) or sys.stdout.flush() for d in iter(lambda:c.recv(4096),b'')]"` on dev machine to receive output.
 - Pairing certs at `/system_ex/app/MLPS00001/client_cert.pem` and `client_key.pem` — DO NOT
