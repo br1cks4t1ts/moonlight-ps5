@@ -188,17 +188,45 @@ def make_pkg(fself_data, sfo_data, icon_data, title_id):
             eid, name_off, fl1, fl2, offsets[i], len(data))
         tbl += b"\x00" * 8
 
-    # SC entry hashes at 0x100-0x13F
-    hash_tbl = sha256(bytes(tbl))
-    hdr[0x100:0x120] = hash_tbl
-    combined_hash = sha256(hash_tbl + bytes(tbl))
-    hdr[0x120:0x140] = combined_hash
-
+    # Build output first (needed for body digest computation)
     out = bytearray(total)
     out[0:HDR_SZ] = hdr
     out[TBL_OFF:TBL_OFF+len(tbl)] = tbl
     for i, (*_, data) in enumerate(all_entries):
         out[offsets[i]:offsets[i]+len(data)] = data
+
+    # Compute digests in correct order:
+    # 1. Body digest = SHA256 of body content
+    body_data = bytes(out[DAT_OFF:total])
+    body_digest = sha256(body_data)
+
+    # 2. SC entry hashes - hash the DATA of SC entries (entries with ID < 0x0400)
+    sc_entries = []
+    for eid, name_off, fl1, fl2, data in all_entries:
+        if eid < 0x0400:
+            sc_entries.append((eid, data))
+    sc_entries.sort(key=lambda x: x[0])
+    
+    sc_data_1 = b''
+    for eid, data in sc_entries[:5]:
+        sc_data_1 += data
+    sc_entries1_hash = sha256(sc_data_1)
+    
+    sc_data_2 = b''
+    for eid, data in sc_entries[:4]:
+        sc_data_2 += data
+    sc_entries2_hash = sha256(sc_data_2)
+
+    # 3. Digest table hash = SHA256(sc_entries1_hash + sc_entries2_hash + body_digest)
+    # (This hashes the first 3 digests, NOT including itself to avoid circular ref)
+    digest_table_hash = sha256(sc_entries1_hash + sc_entries2_hash + body_digest)
+
+    # Place all digests in header
+    hdr[0x100:0x120] = sc_entries1_hash
+    hdr[0x120:0x140] = sc_entries2_hash
+    hdr[0x140:0x160] = digest_table_hash
+    hdr[0x160:0x180] = body_digest
+    out[0:HDR_SZ] = hdr  # Update header with computed digests
 
     return bytes(out)
 
@@ -225,13 +253,16 @@ def main():
     sfo = make_sfo(args.title_id, args.title_name, content_id)
     print(f"param.sfo  : {len(sfo)} bytes")
 
+    # Try custom icon from pkg-content/sce_sys/icon0.png, then args.icon, then fallback to placeholder
     icon = TINY_PNG
-    if args.icon and os.path.exists(args.icon):
-        with open(args.icon, "rb") as f:
-            icon = f.read()
-        print(f"icon0.png  : {len(icon):,} bytes (custom)")
-    else:
-        print(f"icon0.png  : {len(icon)} bytes (placeholder)")
+    icon_source = "placeholder"
+    for icon_path in ["pkg-content/sce_sys/icon0.png", args.icon]:
+        if icon_path and os.path.exists(icon_path):
+            with open(icon_path, "rb") as f:
+                icon = f.read()
+            icon_source = icon_path
+            break
+    print(f"icon0.png  : {len(icon):,} bytes ({icon_source})")
 
     pkg = make_pkg(fself, sfo, icon, args.title_id)
     with open(args.output, "wb") as f:
