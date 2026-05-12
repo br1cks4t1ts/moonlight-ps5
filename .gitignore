@@ -5,3 +5,18 @@ build/
 *.o
 *.npsso
 
+# Reference code - clone separately (see README)
+reference/
+FFmpeg/
+Moonlight-Switch/
+opus/
+mbedtls/
+moonlight-common-c/
+
+# PS5 SDK tools (proprietary)
+ps5-pub-tools/
+ps5-sdk.tar.gz
+ps5-payload-sdk/
+
+# Large binary tools
+activate/
