@@ -12,21 +12,17 @@ A Moonlight game streaming client for PS5 homebrew (firmware 10.00, etaHEN jailb
 - A Moonlight-compatible game streaming server (e.g., [Sunshine](https://github.com/LizardByte/Sunshine), Wolf/Games-on-Whales)
 - Dev environment with PS5 toolchain
 
-## Getting Dependencies
+## Dependencies
 
-This repo does not include large dependencies. Clone them into the project root:
+This repo includes the core dependencies needed to build:
 
+- `moonlight-common-c` - Core Moonlight protocol (included)
+- `mbedtls` - TLS/cryptography (included)
+- `opus` - Audio codec (included)
+
+**Note:** FFmpeg is not included (too large). Clone it separately if needed:
 ```bash
-# Core Moonlight protocol (required)
-git clone https://github.com/moonlight-stream/moonlight-common-c
-
-# Other dependencies (required)
-git clone https://github.com/ARM-software/mbedtls
-git clone https://github.com/xiph/opus
 git clone https://github.com/FFmpeg/FFmpeg
-
-# Reference code (optional, for learning/porting)
-git clone https://github.com/nicoco007/Moonlight-NX reference/Moonlight-Switch
 ```
 
 ## Building
@@ -58,36 +54,18 @@ The client will generate a new RSA key pair and certificate on first launch if `
 ## Credits & Acknowledgments
 
 ### Core Moonlight Project
-- **Moonlight Streaming** - The core game streaming protocol
-  - [moonlight-common-c](https://github.com/moonlight-stream/moonlight-common-c)
-  - Original developers: Moonlight Stream team (many contributors over the years)
-
-### Reference Ports
-- **Moonlight-Switch** - This PS5 port is heavily based on the Nintendo Switch port
-  - [Moonlight-NX](https://github.com/nicoco007/Moonlight-NX)
-  - Maintained by nicoco007 and contributors
+- [moonlight-common-c](https://github.com/moonlight-stream/moonlight-common-c) - Original developers
 
 ### Dependencies
-- **FFmpeg** - Video decoding (https://ffmpeg.org)
-- **mbedTLS** - TLS/cryptography (https://tls.mbed.org)
-- **Opus** - Audio codec (https://opus-codec.org)
+- [mbedTLS](https://github.com/ARM-software/mbedtls) - TLS/cryptography
+- [Opus](https://github.com/xiph/opus) - Audio codec
 
 ### PS5 Development
-- **PS5 Payload SDK** - Tools for PS5 homebrew development
-- **ps5-pub-tools** - PKG building and signing tools
-- **etaHEN** - The jailbreak that makes this possible
-
-### Additional References
-- Various PS5 homebrew projects that provided guidance on:
-  - SceVideoOut integration
-  - ScePad input handling
-  - Audio output
-  - PKG creation
+- etaHEN jailbreak
+- Various PS5 homebrew projects
 
 ---
 
 ## License
 
 GPLv3 - See LICENSE file for details.
-
-This project combines code from many sources, all used in compliance with their respective licenses.
