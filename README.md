@@ -17,16 +17,16 @@ A Moonlight game streaming client for PS5 homebrew (firmware 10.00, etaHEN jailb
 This repo does not include large dependencies. Clone them into the project root:
 
 ```bash
-# Core Moonlight protocol
+# Core Moonlight protocol (required to build)
 git clone https://github.com/moonlight-stream/moonlight-common-c
 
-# Dependencies
+# Dependencies (required to build)
 git clone https://github.com/ARM-software/mbedtls
 git clone https://github.com/xiph/opus
 git clone https://github.com/FFmpeg/FFmpeg
 
-# Reference (for learning/porting)
-git clone https://github.com/nicoco007/Moonlight-NX Moonlight-Switch
+# Reference code (for learning/porting - optional)
+git clone https://github.com/nicoco007/Moonlight-NX reference/Moonlight-Switch
 ```
 
 ## Building

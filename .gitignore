@@ -5,8 +5,12 @@ build/
 *.o
 *.npsso
 
-# Reference code - clone separately (see README)
+# Reference code - for learning/porting (clone separately, see README)
 reference/
+
+# Core dependencies - required to build (clone separately, see README)
+library/
+third_party/
 FFmpeg/
 Moonlight-Switch/
 opus/
