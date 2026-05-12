@@ -12,6 +12,23 @@ A Moonlight game streaming client for PS5 homebrew (firmware 10.00, etaHEN jailb
 - A Moonlight-compatible game streaming server (e.g., [Sunshine](https://github.com/LizardByte/Sunshine), Wolf/Games-on-Whales)
 - Dev environment with PS5 toolchain
 
+## Getting Dependencies
+
+This repo does not include large dependencies. Clone them into the project root:
+
+```bash
+# Core Moonlight protocol
+git clone https://github.com/moonlight-stream/moonlight-common-c
+
+# Dependencies
+git clone https://github.com/ARM-software/mbedtls
+git clone https://github.com/xiph/opus
+git clone https://github.com/FFmpeg/FFmpeg
+
+# Reference (for learning/porting)
+git clone https://github.com/nicoco007/Moonlight-NX Moonlight-Switch
+```
+
 ## Building
 
 ```bash

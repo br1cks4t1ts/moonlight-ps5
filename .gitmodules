@@ -1,9 +1,0 @@
-[submodule "reference/moonlight-common-c"]
-	path = reference/moonlight-common-c
-	url = https://github.com/moonlight-stream/moonlight-common-c
-[submodule "reference/mbedtls"]
-	path = reference/mbedtls
-	url = https://github.com/ARM-software/mbedtls
-[submodule "reference/opus"]
-	path = reference/opus
-	url = https://github.com/xiph/opus
