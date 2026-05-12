@@ -102,16 +102,23 @@ def make_pkg(fself_data, sfo_data, icon_data, title_id):
     content_id = f"IV0000-{title_id}_00-MOONLIGHTSTREAMS"
     cid_bytes  = content_id.encode().ljust(0x24, b"\x00")[:0x24]
 
-    # File name table: leading null + null-terminated filenames (matches working PKG convention)
+    # File name table: leading null + null-terminated filenames
     # Offsets: icon0.png=1, param.sfo=11, eboot.bin=21
     file_name_table = b'\x00icon0.png\x00param.sfo\x00eboot.bin\x00'
+
+    # Entry Keys (0x0010) - contains content ID + passcode for fake PKGs
+    # Format: content_id (48 bytes) + passcode (64 bytes) + RSA key data
+    passcode = b'\x00' * 64  # Zero passcode for fake packages
+    entry_keys = cid_bytes + passcode
+    # Pad to typical size (match working PKG's 0x800 bytes)
+    entry_keys = entry_keys.ljust(0x800, b'\x00')
 
     # Build entry table — 12 entries matching real PKG structure
     # Digest entry size = 32 bytes × n_ents; computed after n_ents is known
     # (placeholder replaced below)
     all_entries = [
         (0x0001, 0, 0x40000000, 0x0000, b''),             # digests — placeholder
-        (0x0010, 0, 0x60000000, 0x0000, file_name_table), # entry name table
+        (0x0010, 0, 0x60000000, 0x0000, entry_keys),      # Entry Keys (content ID + passcode)
         (0x0020, 0, 0xe0000000, 0x3000, ENTRY_0020),      # crypto hash material
         (0x0080, 0, 0x60000000, 0x0000, SUBCONTAINER),    # subcontainer
         (0x0100, 0, 0x60000000, 0x0000, ENTRY_0100),      # entry table ref (working PKG copy)
@@ -119,9 +126,9 @@ def make_pkg(fself_data, sfo_data, icon_data, title_id):
         (0x0400, 0, 0x80000000, 0x3000, b'\x00' * len(ENTRY_0400)),  # NP DRM header (zeroed)
         (0x0401, 0, 0x80000000, 0x2000, b'\x00' * len(ENTRY_0401)),  # NP DRM cert (zeroed)
         (0x0409, 0, 0x00000000, 0x0000, ENTRY_0409),      # reserved (zeroed)
-        (0x1000,  1, 0x00000000, 0x0000, sfo_data),       # param.sfo  (name_off=11 param.sfo)
-        (0x1200,  1, 0x00000000, 0x0000, icon_data),      # icon0.png  (name_off=1)
-        (0x1400, 21, 0x00000000, 0x0000, fself_data),     # eboot.bin  (name_off=21)
+        (0x1000,  0, 0x00000000, 0x0000, sfo_data),       # param.sfo  (name_off=0 per working PKG)
+        (0x1200,  0, 0x00000000, 0x0000, icon_data),      # icon0.png  (name_off=0 per working PKG)
+        (0x1400,  0, 0x00000000, 0x0000, fself_data),    # eboot.bin  (name_off=0 per working PKG)
     ]
     n_ents = len(all_entries)
 
