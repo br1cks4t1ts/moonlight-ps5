@@ -4,22 +4,3 @@ build/
 *.elf
 *.o
 *.npsso
-
-# Reference code - for learning/porting (clone separately)
-reference/
-
-# Dependencies - required to build (clone separately)
-dependencies/
-FFmpeg/
-Moonlight-Switch/
-opus/
-mbedtls/
-moonlight-common-c/
-
-# PS5 SDK tools (proprietary)
-ps5-pub-tools/
-ps5-sdk.tar.gz
-ps5-payload-sdk/
-
-# Large binary tools
-activate/
